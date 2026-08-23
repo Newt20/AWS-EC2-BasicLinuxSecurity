@@ -23,7 +23,7 @@ echo "== Allowing SSH (rate-limited) BEFORE enabling ufw =="
 ufw allow OpenSSH
 ufw limit OpenSSH
 
-# Uncomment if this instance also serves HTTP/HTTPS for the lab:
+# Uncomment if this instance also need to serve HTTP/HTTPS:
 # ufw allow 80/tcp
 # ufw allow 443/tcp
 
