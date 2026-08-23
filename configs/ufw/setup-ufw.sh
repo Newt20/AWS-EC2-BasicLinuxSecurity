@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# UFW setup for module17 lab (Ubuntu).
 # Run with: sudo ./setup-ufw.sh
 # IMPORTANT: SSH is allowed BEFORE ufw is enabled, to avoid locking
 # yourself out of the instance.
