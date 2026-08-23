@@ -1,8 +1,8 @@
-# Step 6 — SSH Hardening
+# Step 3 — SSH Hardening
 
 Still SSH'd into the instance as `ubuntu` (or `ec2-user`).
 
-## 6.1 Confirm key-based auth already works before disabling passwords
+## 3.1 Confirm key-based auth already works before disabling passwords
 
 ```bash
 ssh -i module17-lab-key.pem ubuntu@<INSTANCE_PUBLIC_IP> "echo key-auth-ok"
@@ -11,7 +11,7 @@ ssh -i module17-lab-key.pem ubuntu@<INSTANCE_PUBLIC_IP> "echo key-auth-ok"
 Don't proceed until this succeeds — disabling password auth before
 confirming key auth works risks locking yourself out.
 
-## 6.2 Apply the hardening config
+## 3.2 Apply the hardening config
 
 Rather than editing `/etc/ssh/sshd_config` directly, drop a config file
 into `/etc/ssh/sshd_config.d/` (Ubuntu's `sshd_config` includes this
@@ -40,7 +40,7 @@ Key settings applied (see the file for the full list):
 | `X11Forwarding` | `no` | Not needed for this lab; reduces attack surface. |
 | `AllowUsers` | `ubuntu` | Restricts SSH login to a named allow-list of users only. |
 
-## 6.3 Validate config syntax, then restart sshd
+## 3.3 Validate config syntax, then restart sshd
 
 ```bash
 sudo sshd -t                 # syntax check — no output means OK
@@ -48,7 +48,7 @@ sudo systemctl restart ssh   # Ubuntu service name is "ssh" (Amazon Linux: "sshd
 sudo systemctl status ssh
 ```
 
-## 6.4 Verify from a **second terminal without closing the first**
+## 3.4 Verify from a **second terminal without closing the first**
 
 Keep your original SSH session open in case something's wrong.
 
@@ -77,13 +77,13 @@ sudo fail2ban-client status sshd
 
 ## Screenshot checklist for this step
 
-- [ ] `screenshots/06-sshd-config-applied.png` — `cat
+- [ ] `screenshots/03-sshd-config-applied.png` — `cat
       /etc/ssh/sshd_config.d/99-hardening.conf` on the instance.
-- [ ] `screenshots/06-root-login-denied.png` — `ssh root@<IP>` being
+- [ ] `screenshots/03-root-login-denied.png` — `ssh root@<IP>` being
       refused.
-- [ ] `screenshots/06-password-auth-denied.png` — password auth attempt
+- [ ] `screenshots/03-password-auth-denied.png` — password auth attempt
       being refused.
-- [ ] `screenshots/06-key-login-still-works.png` — key-based login still
+- [ ] `screenshots/03-key-login-still-works.png` — key-based login still
       succeeding after hardening.
 
-Next: [`07-ufw-firewall.md`](07-ufw-firewall.md)
+Next: [`04-ufw-firewall.md`](04-ufw-firewall.md)

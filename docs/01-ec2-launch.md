@@ -23,9 +23,9 @@
      after launch.
 7. **Configure storage**: default 8 GiB gp3 is fine.
 8. **Advanced details**: leave **IAM instance profile** as "No IAM Role"
-   for now — you will attach the role in
-   [`04-iam-role-for-ec2.md`](04-iam-role-for-ec2.md) after creating it
-   (the role must exist first).
+   — this lab does not create/attach IAM roles (see the note in the
+   [main README](../README.md) about IAM being out of scope for this
+   account).
 9. Click **Launch instance**.
 10. Wait for **Instance state = Running** and **Status checks = 2/2 passed**.
 

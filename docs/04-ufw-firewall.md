@@ -1,4 +1,4 @@
-# Step 7 — UFW Host-Level Firewall
+# Step 4 — UFW Host-Level Firewall
 
 UFW (Uncomplicated Firewall) adds an **OS-level** firewall on top of the
 Security Group's **network-level** control — defense in depth: even if a
@@ -11,7 +11,7 @@ rules.
 > `firewalld` equivalents (`firewall-cmd --add-service=ssh --permanent`,
 > etc.). The steps below assume **Ubuntu**, which ships UFW.
 
-## 7.1 Install and inspect UFW
+## 4.1 Install and inspect UFW
 
 ```bash
 sudo apt update
@@ -19,14 +19,14 @@ sudo apt install -y ufw
 sudo ufw status verbose   # should show "Status: inactive" initially
 ```
 
-## 7.2 Set default policies (deny in, allow out)
+## 4.2 Set default policies (deny in, allow out)
 
 ```bash
 sudo ufw default deny incoming
 sudo ufw default allow outgoing
 ```
 
-## 7.3 Explicitly allow only what's needed, before enabling
+## 4.3 Explicitly allow only what's needed, before enabling
 
 **Critical**: allow SSH *before* enabling UFW, or enabling it will lock
 you out of your own SSH session.
@@ -45,7 +45,7 @@ chmod +x setup-ufw.sh
 sudo ./setup-ufw.sh
 ```
 
-## 7.4 Enable UFW
+## 4.4 Enable UFW
 
 ```bash
 sudo ufw enable   # confirm "y" — reminds you it may disrupt existing SSH; that's expected, OpenSSH is already allowed
@@ -65,7 +65,7 @@ OpenSSH                    LIMIT       Anywhere
 OpenSSH (v6)                LIMIT       Anywhere (v6)
 ```
 
-## 7.5 Verify from a second terminal (don't close the first)
+## 4.5 Verify from a second terminal (don't close the first)
 
 ```bash
 ssh -i module17-lab-key.pem ubuntu@<INSTANCE_PUBLIC_IP> "sudo ufw status"
@@ -81,12 +81,12 @@ nc -vz <INSTANCE_PUBLIC_IP> 8080   # expect: connection refused/timed out
 
 ## Screenshot checklist for this step
 
-- [ ] `screenshots/07-ufw-status-active.png` — `sudo ufw status verbose`
+- [ ] `screenshots/04-ufw-status-active.png` — `sudo ufw status verbose`
       showing active status, default deny incoming, and the SSH allow/limit
       rule.
-- [ ] `screenshots/07-ufw-ssh-still-works.png` — a fresh SSH session
+- [ ] `screenshots/04-ufw-ssh-still-works.png` — a fresh SSH session
       succeeding after UFW is enabled.
-- [ ] `screenshots/07-ufw-blocks-other-port.png` — an unopened port being
+- [ ] `screenshots/04-ufw-blocks-other-port.png` — an unopened port being
       refused/blocked from outside.
 
-Next: [`08-verification-checklist.md`](08-verification-checklist.md)
+Next: [`05-verification-checklist.md`](05-verification-checklist.md)

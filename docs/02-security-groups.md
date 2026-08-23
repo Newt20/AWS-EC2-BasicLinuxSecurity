@@ -53,4 +53,4 @@ The full rule set is documented in
       an unauthorized source is blocked/times out (e.g. `nc -vz` timeout,
       or an online port-scan result).
 
-Next: [`03-iam-user-and-policy.md`](03-iam-user-and-policy.md)
+Next: [`03-ssh-hardening.md`](03-ssh-hardening.md)
