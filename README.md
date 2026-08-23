@@ -10,7 +10,6 @@ hardening (SSH + UFW).
 3. Harden SSH (key-only auth, no root login)
 4. Configure UFW as a host-level firewall
 
-```
 
 ## Key security principles applied
 
