@@ -1,0 +1,12 @@
+# Never commit key material or credentials
+*.pem
+*.ppk
+*.csv
+.aws/
+credentials
+aws_credentials*
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
